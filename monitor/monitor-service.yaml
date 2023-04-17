@@ -3,10 +3,24 @@ kind: ServiceMonitor
 metadata:
   name: vote-monitor
 spec:
+
   selector:
     matchLabels:
-      app: vote
+      app: !=
+
   endpoints:
   - port: vote
     path: /metrics
+    interval: 15s
 
+  - port: redis
+    path: /metrics
+    interval: 15s
+
+  - port: db
+    path: /metrics
+    interval: 15s
+
+  - port: result
+    path: /metrics
+    interval: 15s

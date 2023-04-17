@@ -4,6 +4,7 @@ metadata:
   labels:
     app: result
   name: result
+#  namespace: web
 spec:
   replicas: 1
   selector:
@@ -22,19 +23,19 @@ spec:
           name: result
         readinessProbe:
           httpGet:
-            path: /healthz
+            path: /
             port: 80
           initialDelaySeconds: 5
           periodSeconds: 10
         livenessProbe:
           httpGet:
-            path: /healthz
+            path: /
             port: 80
           initialDelaySeconds: 15
           periodSeconds: 20
         startupProbe:
           httpGet:
-            path: /healthz
+            path: /
             port: 80
           failureThreshold: 30
           periodSeconds: 10

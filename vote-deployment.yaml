@@ -4,6 +4,7 @@ metadata:
   labels:
     app: vote
   name: vote
+#  namespace: web
 spec:
   replicas: 1
   selector:
@@ -29,19 +30,19 @@ spec:
             cpu: "500m"
         readinessProbe:
           httpGet:
-            path: /healthz
+            path: /
             port: 80
           initialDelaySeconds: 5
           periodSeconds: 10
         livenessProbe:
           httpGet:
-            path: /healthz
+            path: /
             port: 80
           initialDelaySeconds: 15
           periodSeconds: 20
         startupProbe:
           httpGet:
-            path: /healthz
+            path: /
             port: 80
           failureThreshold: 30
           periodSeconds: 10
@@ -50,6 +51,7 @@ apiVersion: autoscaling/v2
 kind: HorizontalPodAutoscaler
 metadata:
   name: vote-hpa
+#  namespace: web
 spec:
   scaleTargetRef:
     apiVersion: apps/v1
