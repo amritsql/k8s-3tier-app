@@ -38,3 +38,6 @@ rules section helps to map host to service
 
 ## how to access the application result ##
 minikube service result
+
+![Application image](./images/application.png)
+![Prometheus image](./images/prometheus.png)
