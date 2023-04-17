@@ -1,0 +1,12 @@
+apiVersion: monitoring.coreos.com/v1
+kind: ServiceMonitor
+metadata:
+  name: vote-monitor
+spec:
+  selector:
+    matchLabels:
+      app: vote
+  endpoints:
+  - port: vote
+    path: /metrics
+
